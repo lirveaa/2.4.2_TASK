@@ -51,10 +51,4 @@ public class UserDaoImpl implements UserDao {
         TypedQuery<User> query = em.createQuery("SELECT u FROM User u",User.class);
         return query.getResultList();
     }
-
-    @Override
-    public User show(int id) {
-        return usersList().stream().filter(user -> user.getId() == id).findAny().orElse(null);
-
-    }
 }

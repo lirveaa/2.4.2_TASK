@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create User</title>
 </head>
 <body>
+<div align="center">
+    <h2>Add new User</h2>
+    <form action="save" method="post" modelAttribute="user">
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="name" name="name" value="your name"/></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" id="last_name" name="last_name" value="your last name"/></td>
 
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td><input type="text" id="age" name="age" value="your age"/></td>
+            </tr>
+            <tr align="center">
+                <td colspan="2"><input type="submit" value="Save"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>

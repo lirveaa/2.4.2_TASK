@@ -25,7 +25,7 @@ public class UserController {
     public UserController(){};
 
 
-    @GetMapping("start")
+    @GetMapping("/start")
     public String start(ModelMap modelMap) {
         List<User> userList = userService.usersList();
         modelMap.addAttribute("listUsers", userList);
@@ -46,11 +46,11 @@ public class UserController {
     }
 
     @GetMapping("/edit")
-    public ModelAndView updateUserForm(@RequestParam(name = "id", defaultValue = "1") long id) {
-        ModelAndView mav = new ModelAndView("update");
+    public ModelAndView updateUserForm(@RequestParam(name = "id") long id) {
+        ModelAndView modelAndView = new ModelAndView("update");
         User user = userService.readUser(id);
-        mav.addObject("user", user);
-        return mav;
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 
     @PostMapping(value = "/update")
@@ -60,7 +60,7 @@ public class UserController {
     }
 
     @GetMapping("/delete")
-    public String deleteUserForm(@RequestParam(name = "id", defaultValue = "1") long id) {
+    public String deleteUserForm(@RequestParam(name = "id") long id) {
         userService.deleteUser(id);
         return "redirect:/user/start";
     }

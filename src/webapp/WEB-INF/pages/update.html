@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Update User</title>
 </head>
 <body>
-$END$
+<div align="center">
+  <h2>Update User</h2>
+
+  <form action="update" method="post" modelAttribute="user">
+    <table border="0" cellpadding="5">
+      <tr>
+            <td>Id:</td>
+            <td><input type="text" id="id" name="id" th:value="${user.id}" readonly>
+            </td>
+        </tr>
+      <tr>
+        <td>Name</td>
+        <td><input type="text" id="name" name="name" th:value="${user.name}"></td>
+      </tr>
+      <tr>
+        <td>Last Name</td>
+        <td><input type="text" id="last_name" name="last_name" th:value="${user.last_name}"></td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td><input type="text" id="age" name="age" th:value="${user.age}"></td>
+      </tr>
+      <tr align="center">
+        <td colspan="2"><input type="submit" value="Update"/></td>
+      </tr>
+    </table>
+  </form>
+
+</div>
 </body>
 </html>

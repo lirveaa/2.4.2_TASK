@@ -43,9 +43,5 @@ public class UserServiceImpl implements UserService{
         return userDao.usersList();
     }
 
-    @Override
-    public User show(int id) {
-        return userDao.show(id);
-    }
 
 }

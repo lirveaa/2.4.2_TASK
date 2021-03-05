@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+
 </head>
 <body>
-$END$
+<div th:align="center">
+  <h1>Simple CRUD Users table</h1>
+  <table th:border="1" th:align="center">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="user : ${listUsers}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.name}"></td>
+      <td th:text="${user.last_name}"></td>
+      <td th:text="${user.age}"></td>
+      <td><a th:href="@{/user/edit?id=} + ${user.id}">Edit</a></td>
+      <td><a th:href="@{/user/delete?id=} + ${user.id}">Delete</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h3><a href="create">Add new User</a></h3>
+
+</div>
 </body>
 </html>
