@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -42,8 +43,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void deleteUser(long id) {
-        User user = readUser(id);
-        em.remove(user);
+        em.createQuery("delete from User u where u.id =:id")
+                .setParameter("id",id).executeUpdate();
     }
 
     @Override
@@ -51,4 +52,5 @@ public class UserDaoImpl implements UserDao {
         TypedQuery<User> query = em.createQuery("SELECT u FROM User u",User.class);
         return query.getResultList();
     }
+
 }
